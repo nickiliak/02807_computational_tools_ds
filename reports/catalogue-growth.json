@@ -1,0 +1,971 @@
+{
+  "generated_utc": "2026-11-23T00:54:28Z",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "protocol": {
+    "medium_queries_are_identical_for_both_catalogues": true,
+    "closed_queries": {
+      "standard": 7458,
+      "tiktok": 8992
+    },
+    "development_tracks_excluded": true,
+    "lsh_settings_frozen": {
+      "bits": 10,
+      "tables": 64,
+      "probes": 3,
+      "seed": 2807
+    },
+    "ivf_settings_frozen": {
+      "centres": 256,
+      "probes": 16,
+      "seed": 2807,
+      "max_iter": 20
+    },
+    "source_commits": {
+      "lsh_and_exact": "5e9427ee5f83cd32fdd9b5a1c8f40396c3772989",
+      "ivf": "b35e9525385f7855b7858af046f9540c4dcb5e87"
+    },
+    "timing_boundaries": {
+      "query_sample_size": 192,
+      "single_query_calls": "Warm, resident GPU query and index; GPU synchronized before and after each lookup; methods interleaved on the same fixed query sample.",
+      "single_query_includes": "GPU search compute, kernel launches and host call overhead through completion.",
+      "single_query_excludes": "Audio decoding, fingerprint extraction, query host-to-device transfer, index construction, and the analysis-only LSH top-two margin pass.",
+      "batch_throughput": "Three synchronized passes over the same held-out query vectors in chunks of 128."
+    },
+    "open_set": {
+      "source_revision": "c897de3728d60c47fda5271449b8166aa09cd01b",
+      "test_queries": 2048,
+      "thresholds": {
+        "max_false_accepts_on_development": 10,
+        "maximum_score": {
+          "score_threshold": 0.834209919,
+          "gap_threshold": null,
+          "dev_false_accepts": 10,
+          "dev_known_correct_accepts": 551
+        },
+        "score_and_margin": {
+          "score_threshold": 0.749896646,
+          "gap_threshold": 0.11748421200000002,
+          "dev_false_accepts": 10,
+          "dev_known_correct_accepts": 755
+        }
+      },
+      "removed_songs_excluded_from_each_catalogue": true
+    },
+    "medium_large_pair_validation": {
+      "medium_windows": 110320,
+      "large_windows": 464464,
+      "medium_windows_found_in_large": 110320,
+      "medium_tracks": 24970,
+      "large_tracks": 105705,
+      "added_distinct_track_ids": 80735,
+      "large_max_segment_idx": 121,
+      "large_tracks_with_segment_idx_above_4": [
+        "008747",
+        "008748",
+        "008749",
+        "008750",
+        "008751",
+        "008752",
+        "008753",
+        "008754",
+        "008755",
+        "008756",
+        "008757",
+        "008758",
+        "035724",
+        "036728",
+        "039179",
+        "106611",
+        "106613",
+        "137686"
+      ],
+      "medium_track_ids_all_present_in_large": true,
+      "same_medium_fingerprints_in_large": true,
+      "maximum_vector_absolute_difference": 0.0
+    }
+  },
+  "medium": {
+    "reference_windows": 110320,
+    "reference_tracks": 24970,
+    "reference_file_bytes": 114513414,
+    "methods": {
+      "standard": {
+        "exact": {
+          "queries": 7458,
+          "correct": 7315,
+          "accuracy": 0.9808259587020649
+        },
+        "lsh": {
+          "queries": 7458,
+          "correct": 7315,
+          "accuracy": 0.9808259587020649
+        },
+        "ivf": {
+          "queries": 7458,
+          "correct": 7274,
+          "accuracy": 0.9753285063019577
+        }
+      },
+      "tiktok": {
+        "exact": {
+          "queries": 8992,
+          "correct": 8411,
+          "accuracy": 0.9353870106761566
+        },
+        "lsh": {
+          "queries": 8992,
+          "correct": 8411,
+          "accuracy": 0.9353870106761566
+        },
+        "ivf": {
+          "queries": 8992,
+          "correct": 8342,
+          "accuracy": 0.9277135231316725
+        }
+      }
+    },
+    "paired_timing": {
+      "exact": {
+        "queries": 192,
+        "median_ms": 0.17299999672104605,
+        "p95_ms": 0.1975999985006638,
+        "p99_ms": 0.3126150000753115,
+        "order": "warm, single-query, per-call GPU synchronisation, interleaved methods"
+      },
+      "lsh": {
+        "queries": 192,
+        "median_ms": 0.08150000212481245,
+        "p95_ms": 0.09793500103114636,
+        "p99_ms": 0.14015000408107905,
+        "order": "warm, single-query, per-call GPU synchronisation, interleaved methods"
+      },
+      "ivf": {
+        "queries": 192,
+        "median_ms": 0.06990000110818073,
+        "p95_ms": 0.08052500197663903,
+        "p99_ms": 0.20149300187767957,
+        "order": "warm, single-query, per-call GPU synchronisation, interleaved methods"
+      }
+    },
+    "batch_throughput": {
+      "exact": {
+        "queries": 16450,
+        "chunk_size": 128,
+        "repetitions": 3,
+        "median_seconds": 0.043745799994212575,
+        "queries_per_second": 376036.09951529704
+      },
+      "lsh": {
+        "queries": 16450,
+        "chunk_size": 128,
+        "repetitions": 3,
+        "median_seconds": 0.2289355999964755,
+        "queries_per_second": 71854.26818831693
+      },
+      "ivf": {
+        "queries": 16450,
+        "chunk_size": 128,
+        "repetitions": 3,
+        "median_seconds": 0.03795159999572206,
+        "queries_per_second": 433446.81125049427
+      }
+    },
+    "build_and_memory": {
+      "lsh_build_seconds": 0.21190470000146888,
+      "ivf_build_seconds": 0.13979969999491004,
+      "lsh_index_bytes_excluding_references": 29159680,
+      "ivf_index_bytes_excluding_references": 704452,
+      "shared_reference_bytes": 112967680
+    },
+    "open_set": {
+      "exact": {
+        "frozen_maximum_score": {
+          "score_threshold": 0.834209919,
+          "gap_threshold": null,
+          "known_correct": 536,
+          "known_queries": 1024,
+          "known_correct_rate": 0.5234375,
+          "known_wrong_accepts": 4,
+          "unknown_false_accepts": 4,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.00390625,
+          "by_family": {
+            "standard": {
+              "known_correct": 367,
+              "known_queries": 512,
+              "known_correct_rate": 0.716796875,
+              "unknown_false_accepts": 4,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.0078125
+            },
+            "tiktok": {
+              "known_correct": 169,
+              "known_queries": 512,
+              "known_correct_rate": 0.330078125,
+              "unknown_false_accepts": 0,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.0
+            }
+          }
+        },
+        "frozen_score_and_gap": {
+          "score_threshold": 0.749896646,
+          "gap_threshold": 0.11748421200000002,
+          "known_correct": 731,
+          "known_queries": 1024,
+          "known_correct_rate": 0.7138671875,
+          "known_wrong_accepts": 0,
+          "unknown_false_accepts": 11,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.0107421875,
+          "by_family": {
+            "standard": {
+              "known_correct": 454,
+              "known_queries": 512,
+              "known_correct_rate": 0.88671875,
+              "unknown_false_accepts": 8,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.015625
+            },
+            "tiktok": {
+              "known_correct": 277,
+              "known_queries": 512,
+              "known_correct_rate": 0.541015625,
+              "unknown_false_accepts": 3,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.005859375
+            }
+          }
+        },
+        "_top_one_reconciliation": {
+          "pinned_winner_matches_distinct_track_reduction": 2040,
+          "floating_point_or_tie_differences_within_2e-5": 8,
+          "queries": 2048,
+          "maximum_score_absolute_difference": 5.960464477539062e-07,
+          "tie_winner_reconciled_to_pinned_search": true
+        },
+        "_top_two_score_order_check": {
+          "runner_above_pinned_winner_within_2e-5": 6,
+          "maximum_runner_minus_winner_score": 1.7881393432617188e-07,
+          "negative_gap_clamped_to_zero": true
+        }
+      },
+      "ivf": {
+        "frozen_maximum_score": {
+          "score_threshold": 0.834209919,
+          "gap_threshold": null,
+          "known_correct": 536,
+          "known_queries": 1024,
+          "known_correct_rate": 0.5234375,
+          "known_wrong_accepts": 4,
+          "unknown_false_accepts": 4,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.00390625,
+          "by_family": {
+            "standard": {
+              "known_correct": 367,
+              "known_queries": 512,
+              "known_correct_rate": 0.716796875,
+              "unknown_false_accepts": 4,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.0078125
+            },
+            "tiktok": {
+              "known_correct": 169,
+              "known_queries": 512,
+              "known_correct_rate": 0.330078125,
+              "unknown_false_accepts": 0,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.0
+            }
+          }
+        },
+        "frozen_score_and_gap": {
+          "score_threshold": 0.749896646,
+          "gap_threshold": 0.11748421200000002,
+          "known_correct": 725,
+          "known_queries": 1024,
+          "known_correct_rate": 0.7080078125,
+          "known_wrong_accepts": 0,
+          "unknown_false_accepts": 11,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.0107421875,
+          "by_family": {
+            "standard": {
+              "known_correct": 452,
+              "known_queries": 512,
+              "known_correct_rate": 0.8828125,
+              "unknown_false_accepts": 8,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.015625
+            },
+            "tiktok": {
+              "known_correct": 273,
+              "known_queries": 512,
+              "known_correct_rate": 0.533203125,
+              "unknown_false_accepts": 3,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.005859375
+            }
+          }
+        },
+        "_top_one_reconciliation": {
+          "pinned_winner_matches_distinct_track_reduction": 2041,
+          "floating_point_or_tie_differences_within_2e-5": 7,
+          "queries": 2048,
+          "maximum_score_absolute_difference": 2.384185791015625e-07,
+          "tie_winner_reconciled_to_pinned_search": true
+        },
+        "_top_two_score_order_check": {
+          "runner_above_pinned_winner_within_2e-5": 2,
+          "maximum_runner_minus_winner_score": 5.960464477539063e-08,
+          "negative_gap_clamped_to_zero": true
+        }
+      },
+      "lsh": {
+        "frozen_maximum_score": {
+          "score_threshold": 0.834209919,
+          "gap_threshold": null,
+          "known_correct": 536,
+          "known_queries": 1024,
+          "known_correct_rate": 0.5234375,
+          "known_wrong_accepts": 4,
+          "unknown_false_accepts": 4,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.00390625,
+          "by_family": {
+            "standard": {
+              "known_correct": 367,
+              "known_queries": 512,
+              "known_correct_rate": 0.716796875,
+              "unknown_false_accepts": 4,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.0078125
+            },
+            "tiktok": {
+              "known_correct": 169,
+              "known_queries": 512,
+              "known_correct_rate": 0.330078125,
+              "unknown_false_accepts": 0,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.0
+            }
+          }
+        },
+        "frozen_score_and_gap": {
+          "score_threshold": 0.749896646,
+          "gap_threshold": 0.11748421200000002,
+          "known_correct": 731,
+          "known_queries": 1024,
+          "known_correct_rate": 0.7138671875,
+          "known_wrong_accepts": 0,
+          "unknown_false_accepts": 11,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.0107421875,
+          "by_family": {
+            "standard": {
+              "known_correct": 454,
+              "known_queries": 512,
+              "known_correct_rate": 0.88671875,
+              "unknown_false_accepts": 8,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.015625
+            },
+            "tiktok": {
+              "known_correct": 277,
+              "known_queries": 512,
+              "known_correct_rate": 0.541015625,
+              "unknown_false_accepts": 3,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.005859375
+            }
+          }
+        },
+        "_top_one_verification": {
+          "frozen_lsh_winner_matches_candidate_mask": 2048,
+          "floating_point_or_tie_differences_within_2e-5": 0,
+          "queries": 2048,
+          "score_gap_is_analysis_only": true,
+          "gap_candidates_are_union_of_pinned_lsh_buckets": true
+        },
+        "_top_two_score_order_check": {
+          "runner_above_pinned_winner_within_2e-5": 3,
+          "maximum_runner_minus_winner_score": 1.1920928955078125e-07,
+          "negative_gap_clamped_to_zero": true
+        }
+      },
+      "_index_build_seconds_after_song_removal": {
+        "lsh": 0.029127000001608394,
+        "ivf": 0.04259920000185957
+      },
+      "pr6_score_only_tie_reconciliation": {
+        "pr6_known_correct_score_only_accepts": 538,
+        "cupy_strict_known_correct_score_only_accepts": 536,
+        "tie_aware_known_correct_score_only_accepts": 538,
+        "score_threshold": 0.834209919,
+        "explained_by_exact_tie_breaks": 2,
+        "other_pr6_acceptances_missing_from_cupy": [],
+        "cupy_acceptances_not_in_pr6": [],
+        "reconciled": true,
+        "tie_cases": [
+          {
+            "test_query_index": 16,
+            "track_id": "117253",
+            "family": "standard",
+            "distortion": "time_stretch",
+            "pr6_winner": "117253",
+            "cupy_winner": "117089",
+            "pr6_winner_score": 0.887678623,
+            "pr6_runner_up_track": "117089",
+            "pr6_runner_up_score": 0.887678623,
+            "pr6_score_gap": 0.0,
+            "cupy_top_score": 0.8876786231994629,
+            "cupy_minus_pr6_score": 1.9946289064876055e-10,
+            "score_threshold": 0.834209919,
+            "winner_score_minus_threshold": 0.053468704000000034
+          },
+          {
+            "test_query_index": 960,
+            "track_id": "122153",
+            "family": "standard",
+            "distortion": "high_pass",
+            "pr6_winner": "122153",
+            "cupy_winner": "046066",
+            "pr6_winner_score": 0.893376529,
+            "pr6_runner_up_track": "046066",
+            "pr6_runner_up_score": 0.893376529,
+            "pr6_score_gap": 0.0,
+            "cupy_top_score": 0.8933765292167664,
+            "cupy_minus_pr6_score": 2.167663826213584e-10,
+            "score_threshold": 0.834209919,
+            "winner_score_minus_threshold": 0.05916661000000001
+          }
+        ],
+        "interpretation": "PR6 uses PyTorch top-k tie selection; the pinned CuPy exact search picks the first matching reference row. The tied scores and frozen threshold are unchanged, but deterministic top-1 tie winners differ."
+      }
+    }
+  },
+  "large": {
+    "reference_windows": 464464,
+    "reference_tracks": 105705,
+    "reference_file_bytes": 482114886,
+    "methods": {
+      "standard": {
+        "exact": {
+          "queries": 7458,
+          "correct": 7185,
+          "accuracy": 0.9633950120675785
+        },
+        "lsh": {
+          "queries": 7458,
+          "correct": 7195,
+          "accuracy": 0.9647358541163851
+        },
+        "ivf": {
+          "queries": 7458,
+          "correct": 7159,
+          "accuracy": 0.9599088227406811
+        }
+      },
+      "tiktok": {
+        "exact": {
+          "queries": 8992,
+          "correct": 8095,
+          "accuracy": 0.9002446619217082
+        },
+        "lsh": {
+          "queries": 8992,
+          "correct": 8111,
+          "accuracy": 0.9020240213523132
+        },
+        "ivf": {
+          "queries": 8992,
+          "correct": 8044,
+          "accuracy": 0.8945729537366548
+        }
+      }
+    },
+    "paired_timing": {
+      "exact": {
+        "queries": 192,
+        "median_ms": 0.5848500004503876,
+        "p95_ms": 0.6671599981928011,
+        "p99_ms": 0.7821440027328209,
+        "order": "warm, single-query, per-call GPU synchronisation, interleaved methods"
+      },
+      "lsh": {
+        "queries": 192,
+        "median_ms": 0.25329999698442407,
+        "p95_ms": 0.3325900019262917,
+        "p99_ms": 0.44021100067766394,
+        "order": "warm, single-query, per-call GPU synchronisation, interleaved methods"
+      },
+      "ivf": {
+        "queries": 192,
+        "median_ms": 0.12384999718051404,
+        "p95_ms": 0.23919999912322942,
+        "p99_ms": 0.311660000952543,
+        "order": "warm, single-query, per-call GPU synchronisation, interleaved methods"
+      }
+    },
+    "batch_throughput": {
+      "exact": {
+        "queries": 16450,
+        "chunk_size": 128,
+        "repetitions": 3,
+        "median_seconds": 0.17267170000559418,
+        "queries_per_second": 95267.49316458375
+      },
+      "lsh": {
+        "queries": 16450,
+        "chunk_size": 128,
+        "repetitions": 3,
+        "median_seconds": 2.331084199999168,
+        "queries_per_second": 7056.802152408683
+      },
+      "ivf": {
+        "queries": 16450,
+        "chunk_size": 128,
+        "repetitions": 3,
+        "median_seconds": 0.1839627000008477,
+        "queries_per_second": 89420.30096277234
+      }
+    },
+    "build_and_memory": {
+      "lsh_build_seconds": 0.07680450000043493,
+      "ivf_build_seconds": 0.10487299999658717,
+      "lsh_index_bytes_excluding_references": 119820544,
+      "ivf_index_bytes_excluding_references": 2121028,
+      "shared_reference_bytes": 475611136
+    },
+    "open_set": {
+      "exact": {
+        "frozen_maximum_score": {
+          "score_threshold": 0.834209919,
+          "gap_threshold": null,
+          "known_correct": 523,
+          "known_queries": 1024,
+          "known_correct_rate": 0.5107421875,
+          "known_wrong_accepts": 18,
+          "unknown_false_accepts": 18,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.017578125,
+          "by_family": {
+            "standard": {
+              "known_correct": 361,
+              "known_queries": 512,
+              "known_correct_rate": 0.705078125,
+              "unknown_false_accepts": 14,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.02734375
+            },
+            "tiktok": {
+              "known_correct": 162,
+              "known_queries": 512,
+              "known_correct_rate": 0.31640625,
+              "unknown_false_accepts": 4,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.0078125
+            }
+          }
+        },
+        "frozen_score_and_gap": {
+          "score_threshold": 0.749896646,
+          "gap_threshold": 0.11748421200000002,
+          "known_correct": 691,
+          "known_queries": 1024,
+          "known_correct_rate": 0.6748046875,
+          "known_wrong_accepts": 0,
+          "unknown_false_accepts": 23,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.0224609375,
+          "by_family": {
+            "standard": {
+              "known_correct": 430,
+              "known_queries": 512,
+              "known_correct_rate": 0.83984375,
+              "unknown_false_accepts": 16,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.03125
+            },
+            "tiktok": {
+              "known_correct": 261,
+              "known_queries": 512,
+              "known_correct_rate": 0.509765625,
+              "unknown_false_accepts": 7,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.013671875
+            }
+          }
+        },
+        "_top_one_reconciliation": {
+          "pinned_winner_matches_distinct_track_reduction": 2026,
+          "floating_point_or_tie_differences_within_2e-5": 22,
+          "queries": 2048,
+          "maximum_score_absolute_difference": 5.960464477539062e-07,
+          "tie_winner_reconciled_to_pinned_search": true
+        },
+        "_top_two_score_order_check": {
+          "runner_above_pinned_winner_within_2e-5": 11,
+          "maximum_runner_minus_winner_score": 2.980232238769531e-07,
+          "negative_gap_clamped_to_zero": true
+        }
+      },
+      "ivf": {
+        "frozen_maximum_score": {
+          "score_threshold": 0.834209919,
+          "gap_threshold": null,
+          "known_correct": 523,
+          "known_queries": 1024,
+          "known_correct_rate": 0.5107421875,
+          "known_wrong_accepts": 15,
+          "unknown_false_accepts": 18,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.017578125,
+          "by_family": {
+            "standard": {
+              "known_correct": 360,
+              "known_queries": 512,
+              "known_correct_rate": 0.703125,
+              "unknown_false_accepts": 14,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.02734375
+            },
+            "tiktok": {
+              "known_correct": 163,
+              "known_queries": 512,
+              "known_correct_rate": 0.318359375,
+              "unknown_false_accepts": 4,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.0078125
+            }
+          }
+        },
+        "frozen_score_and_gap": {
+          "score_threshold": 0.749896646,
+          "gap_threshold": 0.11748421200000002,
+          "known_correct": 684,
+          "known_queries": 1024,
+          "known_correct_rate": 0.66796875,
+          "known_wrong_accepts": 0,
+          "unknown_false_accepts": 23,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.0224609375,
+          "by_family": {
+            "standard": {
+              "known_correct": 426,
+              "known_queries": 512,
+              "known_correct_rate": 0.83203125,
+              "unknown_false_accepts": 16,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.03125
+            },
+            "tiktok": {
+              "known_correct": 258,
+              "known_queries": 512,
+              "known_correct_rate": 0.50390625,
+              "unknown_false_accepts": 7,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.013671875
+            }
+          }
+        },
+        "_top_one_reconciliation": {
+          "pinned_winner_matches_distinct_track_reduction": 2024,
+          "floating_point_or_tie_differences_within_2e-5": 24,
+          "queries": 2048,
+          "maximum_score_absolute_difference": 2.384185791015625e-07,
+          "tie_winner_reconciled_to_pinned_search": true
+        },
+        "_top_two_score_order_check": {
+          "runner_above_pinned_winner_within_2e-5": 9,
+          "maximum_runner_minus_winner_score": 1.1920928955078125e-07,
+          "negative_gap_clamped_to_zero": true
+        }
+      },
+      "lsh": {
+        "frozen_maximum_score": {
+          "score_threshold": 0.834209919,
+          "gap_threshold": null,
+          "known_correct": 526,
+          "known_queries": 1024,
+          "known_correct_rate": 0.513671875,
+          "known_wrong_accepts": 15,
+          "unknown_false_accepts": 18,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.017578125,
+          "by_family": {
+            "standard": {
+              "known_correct": 363,
+              "known_queries": 512,
+              "known_correct_rate": 0.708984375,
+              "unknown_false_accepts": 14,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.02734375
+            },
+            "tiktok": {
+              "known_correct": 163,
+              "known_queries": 512,
+              "known_correct_rate": 0.318359375,
+              "unknown_false_accepts": 4,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.0078125
+            }
+          }
+        },
+        "frozen_score_and_gap": {
+          "score_threshold": 0.749896646,
+          "gap_threshold": 0.11748421200000002,
+          "known_correct": 691,
+          "known_queries": 1024,
+          "known_correct_rate": 0.6748046875,
+          "known_wrong_accepts": 0,
+          "unknown_false_accepts": 23,
+          "unknown_queries": 1024,
+          "unknown_false_acceptance_rate": 0.0224609375,
+          "by_family": {
+            "standard": {
+              "known_correct": 430,
+              "known_queries": 512,
+              "known_correct_rate": 0.83984375,
+              "unknown_false_accepts": 16,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.03125
+            },
+            "tiktok": {
+              "known_correct": 261,
+              "known_queries": 512,
+              "known_correct_rate": 0.509765625,
+              "unknown_false_accepts": 7,
+              "unknown_queries": 512,
+              "unknown_false_acceptance_rate": 0.013671875
+            }
+          }
+        },
+        "_top_one_verification": {
+          "frozen_lsh_winner_matches_candidate_mask": 2041,
+          "floating_point_or_tie_differences_within_2e-5": 7,
+          "queries": 2048,
+          "score_gap_is_analysis_only": true,
+          "gap_candidates_are_union_of_pinned_lsh_buckets": true
+        },
+        "_top_two_score_order_check": {
+          "runner_above_pinned_winner_within_2e-5": 9,
+          "maximum_runner_minus_winner_score": 1.1920928955078125e-07,
+          "negative_gap_clamped_to_zero": true
+        }
+      },
+      "_index_build_seconds_after_song_removal": {
+        "lsh": 0.05873769999743672,
+        "ivf": 0.10104129999672296
+      }
+    },
+    "paired_changes_vs_medium": {
+      "standard": {
+        "exact": {
+          "lost_correct": 130,
+          "gained_correct": 0,
+          "gained_correct_query_ids": [],
+          "medium_accuracy": 0.9808259587020649,
+          "large_accuracy": 0.9633950120675785,
+          "accuracy_change_percentage_points": -1.743094663448641,
+          "same_prediction": 7280
+        },
+        "lsh": {
+          "lost_correct": 120,
+          "gained_correct": 0,
+          "gained_correct_query_ids": [],
+          "medium_accuracy": 0.9808259587020649,
+          "large_accuracy": 0.9647358541163851,
+          "accuracy_change_percentage_points": -1.6090104585679832,
+          "same_prediction": 7291
+        },
+        "ivf": {
+          "lost_correct": 141,
+          "gained_correct": 26,
+          "gained_correct_query_ids": [
+            124554,
+            48859,
+            106634,
+            66941,
+            51552,
+            118706,
+            58604,
+            71202,
+            23855,
+            37416,
+            126668,
+            107122,
+            93025,
+            63354,
+            85600,
+            71933,
+            91235,
+            72727,
+            93604,
+            47201,
+            129484,
+            96297,
+            71823,
+            40796,
+            129883,
+            60970
+          ],
+          "medium_accuracy": 0.9753285063019577,
+          "large_accuracy": 0.9599088227406811,
+          "accuracy_change_percentage_points": -1.5419683561276543,
+          "same_prediction": 7231
+        }
+      },
+      "tiktok": {
+        "exact": {
+          "lost_correct": 316,
+          "gained_correct": 0,
+          "gained_correct_query_ids": [],
+          "medium_accuracy": 0.9353870106761566,
+          "large_accuracy": 0.9002446619217082,
+          "accuracy_change_percentage_points": -3.514234875444844,
+          "same_prediction": 8355
+        },
+        "lsh": {
+          "lost_correct": 300,
+          "gained_correct": 0,
+          "gained_correct_query_ids": [],
+          "medium_accuracy": 0.9353870106761566,
+          "large_accuracy": 0.9020240213523132,
+          "accuracy_change_percentage_points": -3.3362989323843406,
+          "same_prediction": 8371
+        },
+        "ivf": {
+          "lost_correct": 348,
+          "gained_correct": 50,
+          "gained_correct_query_ids": [
+            55261,
+            67224,
+            98986,
+            47946,
+            99438,
+            54027,
+            126950,
+            52970,
+            60701,
+            137724,
+            10388,
+            93960,
+            143990,
+            105956,
+            141,
+            91211,
+            70824,
+            98550,
+            70657,
+            82687,
+            67357,
+            50448,
+            45060,
+            107250,
+            91205,
+            59562,
+            22138,
+            118724,
+            95549,
+            91437,
+            113165,
+            13472,
+            75396,
+            145601,
+            148847,
+            143094,
+            139117,
+            74383,
+            53899,
+            124335,
+            22357,
+            118724,
+            56020,
+            64919,
+            107613,
+            75396,
+            141170,
+            147167,
+            129211,
+            66399
+          ],
+          "medium_accuracy": 0.9277135231316725,
+          "large_accuracy": 0.8945729537366548,
+          "accuracy_change_percentage_points": -3.314056939501775,
+          "same_prediction": 8260
+        }
+      }
+    },
+    "exact_search_nested_catalogue_checks": {
+      "closed_set_exact_correct_gains": {
+        "standard": 0,
+        "tiktok": 0
+      },
+      "open_set": {
+        "score_only_unknown_false_accepts": {
+          "medium": 4,
+          "large": 18,
+          "non_decreasing": true,
+          "no_medium_accept_became_large_reject": true,
+          "unexpected_declines": []
+        },
+        "score_plus_gap_known_correct_accepts": {
+          "medium": 731,
+          "large": 691,
+          "non_increasing": true,
+          "no_new_correct_accepts": true,
+          "unexpected_new_accepts": []
+        }
+      },
+      "closed_set_exact_gain_score_diagnostics": {
+        "standard": {
+          "gained_correct_queries": 0,
+          "score_diagnostics": []
+        },
+        "tiktok": {
+          "gained_correct_queries": 0,
+          "score_diagnostics": []
+        }
+      },
+      "interpretation": "Adding distinct tracks cannot mathematically turn an exact medium error into a correct match. If a recorded gain appears, inspect score ties and GPU floating-point changes."
+    }
+  },
+  "speed_comparison": {
+    "speedup_vs_exact": {
+      "medium": {
+        "lsh": 2.1226992909289346,
+        "ivf": 2.474964148474084
+      },
+      "large": {
+        "lsh": 2.308922255874923,
+        "ivf": 4.722244761927254
+      }
+    },
+    "large_vs_medium_change": {
+      "exact": {
+        "median_latency_percent": 238.0635904828538,
+        "p95_latency_percent": 237.6315805946527,
+        "batch_throughput_percent": -74.66533311897936
+      },
+      "lsh": {
+        "median_latency_percent": 210.79753420927528,
+        "p95_latency_percent": 239.60279616530335,
+        "batch_throughput_percent": -90.17900769107537
+      },
+      "ivf": {
+        "median_latency_percent": 77.18168128329155,
+        "p95_latency_percent": 197.05059702156024,
+        "batch_throughput_percent": -79.3699483669531
+      }
+    }
+  },
+  "limitations": [
+    "FMA Large is the 30-second excerpt collection, though the processed catalogue preserves longer segment sequences; see the pair-validation summary.",
+    "Closed-set queries retain the original medium head and synthetic distortions.",
+    "Frozen open-set thresholds are transferred without recalibration to the larger catalogue.",
+    "Search timings include lookup only after reference and index data are resident on the GPU.",
+    "LSH score-gap is an analysis-only metric from the exact-score slab restricted to the union of its pinned multprobe buckets; it is excluded from LSH lookup timings."
+  ]
+}

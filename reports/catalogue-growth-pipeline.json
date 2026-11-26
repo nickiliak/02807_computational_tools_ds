@@ -1,0 +1,92 @@
+{
+  "source_tracks": 106574,
+  "added_source_tracks": 81574,
+  "searchable_tracks": 105705,
+  "windows": 464464,
+  "added_windows": 354144,
+  "fp32_fallbacks": 0,
+  "archive_sha1": "497109f4dd721066b5ce5e5f250ec604dc78939e",
+  "medium_reference_sha256": "174234b82db42e42839b26b7d52372b908075d5724451037b26e4a865d33a9b9",
+  "projection_sha256": "4a5fb50d5dea344c0fdc803e9c825b6dfbd39b5dc86bafdce96c261e63801c6f",
+  "backbone_revision": "0562a57814f6f8bbd9fdea0a25921a2fce1a841a",
+  "references_sha256": "128ec22bf1254a8219b9750f9c66f38d1de04e5f990ef1943f8711c4ec13eb3d",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "workers": 10,
+  "batch": 64,
+  "archive_bytes": 100306112191,
+  "shared_source_tracks": 25000,
+  "shared_searchable_tracks": 24970,
+  "new_searchable_tracks": 80735,
+  "new_decode_failures": 253,
+  "new_shorter_than_10_seconds": 515,
+  "new_tracks_below_rms_threshold": 71,
+  "cpu_preparation_probe": {
+    "note": "CPU-only cached archive probe during production GPU extraction; same three batches, rotated order. No changes to production worker count.",
+    "rows": [
+      {
+        "group": 1,
+        "workers": 6,
+        "seconds": 2.438,
+        "windows": 425
+      },
+      {
+        "group": 1,
+        "workers": 10,
+        "seconds": 1.906,
+        "windows": 425
+      },
+      {
+        "group": 1,
+        "workers": 14,
+        "seconds": 2.406,
+        "windows": 425
+      },
+      {
+        "group": 2,
+        "workers": 10,
+        "seconds": 2.14,
+        "windows": 424
+      },
+      {
+        "group": 2,
+        "workers": 14,
+        "seconds": 2.125,
+        "windows": 424
+      },
+      {
+        "group": 2,
+        "workers": 6,
+        "seconds": 1.859,
+        "windows": 424
+      },
+      {
+        "group": 3,
+        "workers": 14,
+        "seconds": 2.125,
+        "windows": 419
+      },
+      {
+        "group": 3,
+        "workers": 6,
+        "seconds": 2.125,
+        "windows": 419
+      },
+      {
+        "group": 3,
+        "workers": 10,
+        "seconds": 2.344,
+        "windows": 419
+      }
+    ]
+  },
+  "regenerated_medium_embedding_check": {
+    "seed": 2807,
+    "tracks": 24,
+    "windows": 108,
+    "rms_and_segments_exact": true,
+    "min_cosine": 0.9999957084655762,
+    "median_cosine": 0.9999998807907104,
+    "unchanged_track_at_medium_top1": 108,
+    "fp32_fallbacks": 0
+  }
+}
