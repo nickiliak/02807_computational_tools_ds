@@ -1,0 +1,34 @@
+{
+  "device": "NVIDIA GeForce RTX 4090",
+  "reference_windows": 110320,
+  "raw_dimension": 1024,
+  "trained_dimension": 256,
+  "families": {
+    "queries": {
+      "queries": 7458,
+      "songs": 5884,
+      "raw_correct": 6920,
+      "trained_correct": 7315,
+      "gained": 417,
+      "lost": 22,
+      "delta_pp": 5.29632609278627,
+      "paired_song_bootstrap95_pp": [
+        4.7548675385046195,
+        5.853663459928907
+      ]
+    },
+    "queries_tiktok": {
+      "queries": 8992,
+      "songs": 7080,
+      "raw_correct": 5217,
+      "trained_correct": 8411,
+      "gained": 3219,
+      "lost": 25,
+      "delta_pp": 35.520462633451956,
+      "paired_song_bootstrap95_pp": [
+        34.51895609788259,
+        36.55663262824146
+      ]
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "cohort": "previous open-set validation, exploratory",
+  "test_queries": 2048,
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "index": {
+    "centres": 256,
+    "probes": 16,
+    "reference_windows": 105782
+  },
+  "same_top": 1976,
+  "same_ordered_top_two": 1819,
+  "rows": [
+    {
+      "signal": "best",
+      "retrieval": "exact",
+      "calibration": "exact",
+      "threshold": 0.8370280861854554,
+      "correct_known": 515,
+      "false_unknown": 8,
+      "known_n": 1024,
+      "unknown_n": 1024
+    },
+    {
+      "signal": "best",
+      "retrieval": "ivf",
+      "calibration": "exact",
+      "threshold": 0.8370280861854554,
+      "correct_known": 515,
+      "false_unknown": 8,
+      "known_n": 1024,
+      "unknown_n": 1024
+    },
+    {
+      "signal": "best",
+      "retrieval": "ivf",
+      "calibration": "ivf",
+      "threshold": 0.8370280861854554,
+      "correct_known": 515,
+      "false_unknown": 8,
+      "known_n": 1024,
+      "unknown_n": 1024
+    },
+    {
+      "signal": "gap",
+      "retrieval": "exact",
+      "calibration": "exact",
+      "threshold": 0.1921629309654236,
+      "correct_known": 691,
+      "false_unknown": 12,
+      "known_n": 1024,
+      "unknown_n": 1024
+    },
+    {
+      "signal": "gap",
+      "retrieval": "ivf",
+      "calibration": "exact",
+      "threshold": 0.1921629309654236,
+      "correct_known": 695,
+      "false_unknown": 12,
+      "known_n": 1024,
+      "unknown_n": 1024
+    },
+    {
+      "signal": "gap",
+      "retrieval": "ivf",
+      "calibration": "ivf",
+      "threshold": 0.1921629309654236,
+      "correct_known": 695,
+      "false_unknown": 12,
+      "known_n": 1024,
+      "unknown_n": 1024
+    }
+  ],
+  "paired_gap_minus_best_pp": {
+    "exact_correct_known": {
+      "estimate": 17.1875,
+      "bootstrap95": [
+        14.16015625,
+        20.21484375
+      ]
+    },
+    "exact_false_unknown": {
+      "estimate": 0.390625,
+      "bootstrap95": [
+        -0.1953125,
+        1.07421875
+      ]
+    },
+    "ivf_correct_known": {
+      "estimate": 17.578125,
+      "bootstrap95": [
+        14.55078125,
+        20.60546875
+      ]
+    },
+    "ivf_false_unknown": {
+      "estimate": 0.390625,
+      "bootstrap95": [
+        -0.1953125,
+        1.07421875
+      ]
+    }
+  }
+}
